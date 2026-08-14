@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 
 public class ClientFile2 {
 
-    private static final String SERVER_ADDR = "192.168.5.5";
+    private static final String SERVER_ADDR = "192.168.5.101";
 //    private static final String SERVER_ADDR = "localhost";
 
     public static void main(String[] args) {
@@ -26,6 +26,7 @@ public class ClientFile2 {
 
             // 서버측으로 보낼 메세지
             writer.println("안녕하세요? 혹시 궁금한 거 있으면 질문하세요.☺️");
+            writer.println("exit");
 
             // 서버 응답 수신
             String responseMessage = reader.readLine(); // 블로킹 (서버에서 데이터 보낼 때까지)

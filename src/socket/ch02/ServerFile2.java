@@ -31,13 +31,8 @@ public class ServerFile2 {
             // 서버가 클라이언트로 응답 메세지 보내기
             writer.println("안녕, 나는 서버야.");
 
-
             // 메세지를 파일에 저장하기
-
-            //FileOutputStream fileOutputStream = new FileOutputStream("assets/socketlog.txt");
             fileWriter.write(message);
-
-
 
         } catch (IOException e) {
             throw new RuntimeException(e);
