@@ -228,6 +228,12 @@ public class HomeHandler implements HttpHandler {
             사용자 목록(JSON)
           </a>
         </li>
+
+        <li>
+          <a href="/dashboard">
+            대시보드
+          </a>
+        </li>
       </ul>
     </nav>
 

@@ -31,8 +31,8 @@ import java.util.concurrent.Executors;
  */
 public class SimpleHttpServer {
 
-    private static final int PORT = 8080;
-    private static final int THREAD_POOL_SIZE = 10; // 미리 생성해두는 스레드 개수
+    public static final int PORT = 8080;
+    public static final int THREAD_POOL_SIZE = 10; // 미리 생성해두는 스레드 개수
 
     static final String TYPE_HTML = "text/html; charset=UTF-8";
     static final String TYPE_TEXT = "text/plain; charset=UTF-8";
@@ -52,6 +52,12 @@ public class SimpleHttpServer {
 
         // http://locahost:8080/api/users
         server.createContext("/api/users", new UserApiHandler());
+
+        // http://locahost:8080/api/time
+        server.createContext("/api/time", new TimeApiHandler());
+
+        // http://locahost:8080/dashboard
+        server.createContext("/dashboard", new DashboardHandler());
 
         // 3. 요청을 처리할 스레드 풀 지정
         server.setExecutor(Executors.newFixedThreadPool(THREAD_POOL_SIZE));

@@ -33,6 +33,18 @@ public class UserApiHandler implements HttpHandler {
         return user.getId();
     }
 
+    /**
+     * 목록을 복사해서 다시 돌려준다.
+     *  복사하는 이유: Gson 로직 중 다른 스레드의 add 요청 시 예외가 발생할 수 있어서
+     */
+    private synchronized ArrayList<User> copyUserList() {
+        return new ArrayList<>(userList);
+    }
+
+    public static synchronized int getUserCount() {
+        return userList.size();
+    }
+
     @Override
     public void handle(HttpExchange exchange) throws IOException {
 
@@ -55,14 +67,6 @@ public class UserApiHandler implements HttpHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * 목록을 복사해서 다시 돌려준다.
-     *  복사하는 이유: Gson 로직 중 다른 스레드의 add 요청 시 예외가 발생할 수 있어서
-     */
-    private ArrayList<User> copyUserList() {
-        return new ArrayList<>(userList);
     }
 
     /**
